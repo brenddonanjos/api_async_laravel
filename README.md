@@ -12,7 +12,7 @@
 <a  href="#docs">Documentação</a> •
 <a  href="#requirements">Requisitos</a> •
 <a  href="#operation">Funcionamento</a> •
-<a  href="#test">Testes</a> 
+<a  href="#tests">Testes</a> 
 </p>
 
 ## Instalação
@@ -103,7 +103,7 @@ Reinicie as filas após configuração.
 </div>
 
 ## Testes
-<div id="operation">
+<div id="tests">
 <p>Eu implementei alguns exemplos simples de <b>Testes de funcionalidade</b> e <b>Testes unitários</b>. Esses podem ser encontrados no diretório <b>/test</b>.</p>
 <p>Para a execução dos testes, executaremos o seguinte comando: </p>
 
