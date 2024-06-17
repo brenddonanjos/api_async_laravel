@@ -1,3 +1,0 @@
-172.21.0.1 - - [14/Jun/2024:18:58:40 +0000] "GET / HTTP/1.1" 200 2386 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0"
-172.22.0.1 - - [14/Jun/2024:19:00:40 +0000] "GET / HTTP/1.1" 200 2386 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0"
-172.22.0.1 - - [14/Jun/2024:19:00:40 +0000] "GET /favicon.ico HTTP/1.1" 200 0 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0"
