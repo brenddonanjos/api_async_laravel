@@ -7,8 +7,7 @@ docker exec php-fpm bash -c "cd /var/www && \
     else \
         echo 'Vendor directory already exists. Skipping composer install.'; \
     fi && \
-    chmod -R 777 storage bootstrap/cache && \
-    php artisan migrate"
+    chmod -R 777 storage bootstrap/cache"
 
 # Entra no container do nginx e define as permissões necessárias para as pastas storage e bootstrap/cache
 docker exec nginx bash -c "cd /var/www && \

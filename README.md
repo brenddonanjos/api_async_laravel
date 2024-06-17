@@ -30,13 +30,19 @@ cd themembers_teste_pratico
 ```
 docker-compose up -d
 ```
-<p>3. Agora precisamos instalar o composer e atribuir permissões aos diretórios de storage e cache do laravel além de executar as migrações. Para isso preparei um shell script que fará todo o trabalho, execute o arquivo <b>finish-setup.sh</b> : </p>
+<p>3. Agora precisamos instalar o composer e atribuir permissões aos diretórios de storage e cache do laravel. Para isso preparei um shell script que fará todo o trabalho, execute o arquivo <b>finish-setup.sh</b> : </p>
 
 ```
 ./finish-setup.sh
 ```
 
-<p>4. Pra finalizar, vamos colocar nossa fila pra rodar, rodaremos esse comando individualmente para que possamos acompanhar os logs no terminal: </p>
+<p>4. Agora, vamos rodar nossas migrations: </p>
+
+```
+docker exec -it php-fpm php artisan migrate
+```
+
+<p>5. Pra finalizar, vamos colocar nossa fila pra rodar, rodaremos esse comando individualmente para que possamos acompanhar os logs no terminal: </p>
 
 ```
 docker exec -it php-fpm php artisan queue:work --queue=default
