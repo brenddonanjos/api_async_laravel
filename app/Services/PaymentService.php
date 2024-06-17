@@ -4,12 +4,15 @@ namespace App\Services;
 
 use App\Interfaces\PaymentGatewayInterface;
 use App\Jobs\EmailNotificationsJob;
-use App\Mail\NotifyPayment;
 use App\Models\Payment;
+use App\Traits\SaveLogTrait;
+use Exception;
 use Illuminate\Support\Facades\Mail;
 
 class PaymentService
 {
+    use SaveLogTrait;
+
     protected $payment;
     protected $buyerService;
     protected $productService;
@@ -28,27 +31,39 @@ class PaymentService
 
     function processPayment(array $data): Payment
     {
-        $buyer = $this->buyerService->findByDocument($data["buyer_document"]);
-        $product = $this->productService->findByCode($data["product_id"]);
+        try {
+            $buyer = $this->buyerService->findByDocument($data["buyer_document"]);
+            if ($buyer == null) {
+                throw new Exception("Buyer not found.");
+            }
+            $product = $this->productService->findByCode($data["product_id"]);
+            if ($product == null) {
+                throw new Exception("Product not found.");
+            }
 
-        $paymentData = [
-            "payment_method" => $data["payment_method"],
-            "status" => "ok",
-            "amount" => $data["amount"],
-            "buyer_id" => $buyer->id,
-            "product_id" => $product->id
-        ];
+            $paymentData = [
+                "payment_method" => $data["payment_method"],
+                "status" => "ok",
+                "amount" => $data["amount"],
+                "buyer_id" => $buyer->id,
+                "product_id" => $product->id
+            ];
 
-        //Processa o pagamento no gateway referente ao tipo de pagamento
-        $gatewayResponse =  $this->paymentGateway->pay($paymentData);
-        dump($gatewayResponse);
+            //Processa o pagamento no gateway referente ao tipo de pagamento
+            $gatewayResponse =  $this->paymentGateway->pay($paymentData);
+            dump($gatewayResponse);
 
-        //registra no BD
-        $paymentResponse = $this->payment->create($paymentData);
+            //registra no BD
+            $paymentResponse = $this->payment->create($paymentData);
 
-        //envia email
-        EmailNotificationsJob::dispatch($buyer, $paymentData["amount"]);
+            //envia email
+            EmailNotificationsJob::dispatch($buyer, $paymentData["amount"]);
 
-        return $paymentResponse;
+            return $paymentResponse;
+        } catch (\Throwable $th) {
+            $this->saveLog("Erro: " . $th->getMessage());
+            dump("Erro: " . $th->getMessage());
+            return null;
+        }
     }
 }

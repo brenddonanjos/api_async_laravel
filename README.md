@@ -7,16 +7,13 @@
 <p  align="center">Escrito em PHP com Laravel Framework v11.10.0 (PHP v8.2.20) </p>
 <p  align="center">API de pagaments</p>
 
-
+<p  align="center">
 <a  href="#install">Instalação</a> •
 <a  href="#docs">Documentação</a> •
 <a  href="#requirements">Requisitos</a> •
 <a  href="#operation">Funcionamento</a> •
-<a  href="#test">Testes</a> •
-
-
-
-  
+<a  href="#test">Testes</a> 
+</p>
 
 ## Instalação
 <div  id="install">
@@ -79,7 +76,7 @@ Reinicie as filas após configuração.
 
 <p>
 	<dl>
-	<dd>3.1. Com o programa aberto importe a collection "php_inicie_app.postman_collection" clicando no botão "import" no canto superior esquerdo.</dd>
+	<dd>3.1. Com o programa aberto importe a collection "Themembers.postman_collection.json" clicando no botão "import" no canto superior esquerdo.</dd>
 	</d1>
 </p>
 </div>

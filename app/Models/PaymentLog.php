@@ -12,6 +12,6 @@ class PaymentLog extends Model
     protected $table = "payments_logs";
 
     protected $fillable = [
-        'payment_type'
+        'message'
     ];
 }

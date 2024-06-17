@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create("payments_logs", function (Blueprint $table) {
             $table->id();
-            $table->string("payment_type");
+            $table->string("message");
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists("payments_logs");
     }
 };

@@ -18,13 +18,13 @@
 					},
 					{
 						"key": "Content-Type",
-						"value": "application/ecmascript",
+						"value": "application/json",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"amount\": 9,\n    \"payment_method\": \"credit_card\",\n    \"buyer_document\": \"49941314063\",\n    \"product_id\": \"ABC123\"\n}",
+					"raw": "{\n    \"amount\": 10,\n    \"payment_method\": \"boleto\",\n    \"buyer_document\": \"64180912058\",\n    \"product_id\": \"ABC123\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -66,7 +66,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"document\": \"49941314063\",\n    \"email\": \"buyer@test.com\"\n}",
+					"raw": "{\n    \"document\": \"64180912058\",\n    \"email\": \"teste@teste.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -108,7 +108,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"id\": \"ABC123\",\n    \"name\": \"Test product\",\n    \"description\": \"Description product\"\n}",
+					"raw": "{\n    \"code\": \"ABC123\",\n    \"name\": \"Test product\",\n    \"description\": \"Description product\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

@@ -8,6 +8,6 @@ trait SaveLogTrait
 {
     public function saveLog($message)
     {
-        PaymentLog::create(["payment_type" => $message]);
+        PaymentLog::create(["message" => $message]);
     }
 }
