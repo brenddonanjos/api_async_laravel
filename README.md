@@ -48,26 +48,6 @@ docker exec -it php-fpm php artisan migrate
 docker exec -it php-fpm php artisan queue:work --queue=default
 ```
 
-<p>5. [opcional] Caso queiramos enviar emails de notificação, é necessário configurar o email que enviará as mensagens no <b>.env</b>, para isso adicione um email e senha do gmail que esteja configurado sem autenticação de dois fatores. Caso possua contas em algum servidor de email como o <b>mailgun</b> ou <b>postmark</b> é necessário configurar no .<b>env</b>  também.  <br>
-Pule essa etapa se não formos configurar.<br/>
- Para essa configuração estão disponíveis os seguintes campos: </p>
-
-```
-MAIL_MAILER=smtp | mailgun | postmark
-MAIL_HOST=smtp.gmail.com | smtp.mailgun.org | smtp.postmarkapp.com
-MAIL_USERNAME=seuemail@gmail.com
-MAIL_PASSWORD=suasenha
-MAIL_ENCRYPTION=ssl | tls
-
-#caso seja mailgun
-MAILGUN_DOMAIN=your-mailgun-domain
-MAILGUN_SECRET=your-mailgun-secret
-MAILGUN_ENDPOINT=api.mailgun.net
-
-#caso seja postmark
-POSTMARK_TOKEN=your-postmark-token
-```
-Reinicie as filas após configuração.
 </div>
 
 ## Documentação
@@ -94,7 +74,7 @@ Reinicie as filas após configuração.
  app/Http/Requests/PaymentRequest.php | Linha: 29 e app/Enums/PaymentTypesEnum.php</p>
  <p>3. <b>Valor buyer_document no formato correto de CPF:</b>  app/Http/Requests/PaymentRequest.php | Linha: 31, app/Http/Requests/BuyerRequest.php | Linha 27 e app/Rules/CpfValidation.php</p>
 <p>4. <b>Processamento assíncrono de pagamento: </b> app/Jobs/ProcessPaymentJob.php</p>
-<p>5. <b>Provedores de pagamento distintos: </b> No diretório <b>app/Gateways/Payments/</b>  estão as 3 classes de pagamento, implementando a interface <b>app/Interfaces/PaymentGatewayInterface.php</b>. A injeção de dependência está configurada no service provider <b>app/Providers/PaymentServiceProvider.php</b>. Os retornos dos respectivos métodos de pagamentos podem ser vistos no log das filas pelo terminal, e também consultados na tabela <b>payments_logs</b>.  </p>
+<p>5. <b>Provedores de pagamento distintos: </b> No diretório <b>app/Gateways/Payments/</b>  estão as 3 classes de pagamento, implementando a interface <b>app/Interfaces/PaymentGatewayInterface.php</b>. Os retornos dos respectivos métodos de pagamentos podem ser vistos no log das filas pelo terminal, e também consultados na tabela <b>payments_logs</b>.  </p>
 </div>
 
 ## Funcionamento
